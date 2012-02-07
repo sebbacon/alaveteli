@@ -399,6 +399,12 @@ class User < ActiveRecord::Base
     def indexed_by_search?
         return self.email_confirmed
     end
+    
+    def survey
+        return @survey if @survey
+        site_name = MySociety::Config.get("SITE_NAME", "Alaveteli")
+        @survey = MySociety::Survey.new(site_name, self.email)
+    end
 
     ## Private instance methods
     private

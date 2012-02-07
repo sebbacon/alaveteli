@@ -92,6 +92,8 @@ ActionController::Routing::Routes.draw do |map|
         user.set_profile_about_me '/profile/set_about_me', :action => 'set_profile_about_me'
 
         user.river '/profile/river', :action => 'river'
+        
+        user.survey '/profile/survey', :action => 'survey'
     end
 
     map.with_options :controller => 'public_body' do |body|

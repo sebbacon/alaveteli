@@ -6,6 +6,8 @@
 #
 # $Id: user_controller.rb,v 1.71 2009-09-17 07:51:47 francis Exp $
 
+require 'survey' # from commonlib/rblib
+
 class UserController < ApplicationController
 
     layout :select_layout
@@ -587,6 +589,5 @@ class UserController < ApplicationController
         UserMailer.deliver_already_registered(user, post_redirect.reason_params, url)
         render :action => 'confirm' # must be same as for send_confirmation_mail above to avoid leak of presence of email in db
     end
-
 end
 

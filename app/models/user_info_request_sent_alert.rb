@@ -31,6 +31,7 @@ class UserInfoRequestSentAlert < ActiveRecord::Base
         'new_response_reminder_3', # repeat reminder user to classify the recent response
         'not_clarified_1', # reminder that user has to explain part of the request
         'comment_1', # tell user that info request has a new comment
+        'survey_1', # ask user to complete the survey
     ]
 end
 
