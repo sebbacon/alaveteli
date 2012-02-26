@@ -31,6 +31,8 @@ class AdminCensorRuleController < AdminController
                 redirect_to admin_url('request/show/' + @censor_rule.info_request.id.to_s)
             elsif !@censor_rule.user.nil?
                 redirect_to admin_url('user/show/' + @censor_rule.user.id.to_s)
+            elsif @censor_rule.regexp?
+                redirect_to admin_url('')
             else
                 raise "internal error"
             end
@@ -65,7 +67,7 @@ class AdminCensorRuleController < AdminController
             render :action => 'edit'
         end
     end
-    
+
     def destroy
         censor_rule = CensorRule.find(params[:censor_rule_id])
         info_request = censor_rule.info_request
