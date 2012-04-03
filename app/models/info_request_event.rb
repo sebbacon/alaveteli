@@ -15,6 +15,7 @@
 #  outgoing_message_id :integer
 #  comment_id          :integer
 #  prominence          :string(255)     default("normal"), not null
+#  reason_for_hiding   :text
 #
 
 # models/info_request_event.rb:

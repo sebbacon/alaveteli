@@ -123,7 +123,11 @@
 
     <% for info_request_event in @info_request_events %>
         <% if info_request_event.visible %>
-            <%= render :partial => 'correspondence', :locals => { :info_request_event => info_request_event } %>
+            <% if info_request_event.user_can_view?(@user) %>
+                <%= render :partial => 'correspondence', :locals => { :info_request_event => info_request_event } %>
+            <% else %>
+                <%= render :partial => 'hidden_correspondence', :locals => { :info_request_event => info_request_event } %>
+            <% end %>
         <% end %>
     <% end %>
 
