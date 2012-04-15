@@ -42,6 +42,7 @@ class CensorRule < ActiveRecord::Base
         to_replace = regexp? ? Regexp.new(self.text, Regexp::MULTILINE) : self.text
         text.gsub!(to_replace, self.replacement)
     end
+
     def apply_to_binary!(binary)
         if binary.nil?
             return nil
@@ -49,12 +50,9 @@ class CensorRule < ActiveRecord::Base
         binary.gsub!(self.text, self.binary_replacement)
     end
 
-
     def validate
-        unless self.regexp?
-            if self.info_request.nil? && self.user.nil? && self.public_body.nil?
-                errors.add("Censor must apply to an info request a user or a body; ")
-            end
+        if !self.regexp? && self.info_request.nil? && self.user.nil? && self.public_body.nil?
+            errors.add("Censor must apply to an info request a user or a body; ")
         end
     end
 
