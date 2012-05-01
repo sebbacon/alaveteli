@@ -84,6 +84,8 @@ ActionController::Routing::Routes.draw do |map|
 
         user.signchangepassword '/profile/change_password',      :action => 'signchangepassword'
         user.signchangeemail '/profile/change_email',      :action => 'signchangeemail'
+        user.signchangeaddress '/profile/change_address',      :action => 'signchangeaddress'
+        user.signchangedob '/profile/change_dob',      :action => 'signchangedob'
 
         user.set_profile_photo '/profile/set_photo', :action => 'set_profile_photo'
         user.clear_profile_photo '/profile/clear_photo', :action => 'clear_profile_photo'

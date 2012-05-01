@@ -345,6 +345,52 @@ class UserController < ApplicationController
         redirect_to user_url(@user)
     end
 
+    def signchangeaddress
+        if not authenticated?(
+                :web => _("To change your address used on {{site_name}}",:site_name=>site_name),
+                :email => _("Then you can change your address used on {{site_name}}",:site_name=>site_name),
+                :email_subject => _("Change your address used on {{site_name}}",:site_name=>site_name)
+            )
+            # "authenticated?" has done the redirect to signin page for us
+            return
+        end
+
+        if !params[:submitted_signchangeaddress_do]
+             render :action => 'signchangeaddress'
+             return
+        else
+          logger.debug @user.address = params[:signchangeaddress][:new_address]
+          @user.save!
+
+          # Now clear the circumstance
+          flash[:notice] = _("You have now changed your address used on {{site_name}}",:site_name=>site_name)
+          redirect_to user_url(@user)
+        end
+    end
+
+    def signchangedob
+        if not authenticated?(
+                :web => _("To change your DOB used on {{site_name}}",:site_name=>site_name),
+                :email => _("Then you can change your DOB used on {{site_name}}",:site_name=>site_name),
+                :email_subject => _("Change your DOB used on {{site_name}}",:site_name=>site_name)
+            )
+            # "authenticated?" has done the redirect to signin page for us
+            return
+        end
+
+        if !params[:submitted_signchangedob_do]
+             render :action => 'signchangedob'
+             return
+        else
+          @user.dob = params[:signchangedob][:new_dob]
+          @user.save!
+
+          # Now clear the circumstance
+          flash[:notice] = _("You have now changed your dob used on {{site_name}}",:site_name=>site_name)
+          redirect_to user_url(@user)
+        end
+    end
+
     # Send a message to another user
     def contact
         @recipient_user = User.find(params[:id])

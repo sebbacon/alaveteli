@@ -20,6 +20,8 @@
 #  email_bounced_at       :datetime
 #  email_bounce_message   :text            default(""), not null
 #  no_limit               :boolean         default(FALSE), not null
+#  address                :string
+#  dob                    :date
 #
 
 # models/user.rb:
