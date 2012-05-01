@@ -100,6 +100,10 @@
             <% if @is_you %>
                 (<%= link_to _("edit text about you"), set_profile_about_me_url() %>)
             <% end %>
+            <h4><%= _("Address") %><h4>
+            <pre><%=h @display_user.address %></pre>
+            <h4><%= _("DOB") %><h4>
+            <pre><%=l @display_user.dob %></pre>
         </div>
     <% end %>
 
@@ -110,6 +114,8 @@
             <% end %>
             <%= link_to _('Change your password'), signchangepassword_url() %> |
             <%= link_to _('Change your email'), signchangeemail_url() %>
+            <%= link_to _('Change your address'), signchangeaddress_url() %>
+            <%= link_to _('Change your DOB'), signchangedob_url() %>
         </p>
     <% end %>
 

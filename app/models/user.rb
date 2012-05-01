@@ -22,6 +22,8 @@
 #  no_limit               :boolean         default(FALSE), not null
 #  receive_email_alerts   :boolean         default(TRUE), not null
 #  user_similarity_id     :integer
+#  address                :string
+#  dob                    :date
 #
 
 # models/user.rb:
