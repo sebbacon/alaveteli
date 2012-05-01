@@ -100,10 +100,14 @@
             <% if @is_you %>
                 (<%= link_to _("edit text about you"), set_profile_about_me_url() %>)
             <% end %>
+            <% if @display_user.address %>
             <h4><%= _("Address") %><h4>
             <pre><%=h @display_user.address %></pre>
+            <% end %>
+            <% if @display_user.dob %>
             <h4><%= _("DOB") %><h4>
             <pre><%=l @display_user.dob %></pre>
+            <% end %>
         </div>
     <% end %>
 
