@@ -25,14 +25,14 @@
         <% end %>
 
         <%= stylesheet_link_tag 'admin-theme/jquery-ui-1.8.15.custom.css', :rel => 'stylesheet'%>
-        <!--[if LT IE 7]> 
-        <style type="text/css">@import url("/stylesheets/ie6.css");</style> 
+        <!--[if LT IE 7]>
+        <style type="text/css">@import url("/stylesheets/ie6.css");</style>
         <![endif]-->
-        <!--[if LT IE 7]> 
-        <style type="text/css">@import url("/stylesheets/ie6-custom.css");</style> 
+        <!--[if LT IE 7]>
+        <style type="text/css">@import url("/stylesheets/ie6-custom.css");</style>
         <![endif]-->
-        <!--[if LT IE 8]> 
-        <style type="text/css">@import url("/stylesheets/ie7.css");</style> 
+        <!--[if LT IE 8]>
+        <style type="text/css">@import url("/stylesheets/ie7.css");</style>
         <![endif]-->
         <!-- the following method for customising CSS is deprecated; see `doc/THEMES.md` for detail -->
         <%= stylesheet_link_tag 'custom', :title => "Main", :rel => "stylesheet"  %>
@@ -76,26 +76,26 @@
                     if (typeof modal_signin_successful != 'undefined' ) {
                         window.location.href = '<%= select_authority_url %>';
                     }
-                } 
+                }
             });
         });
     </script>
     <% end %>
-        
-<% # code for popup advert for a campaign etc.
-=begin
-    <div id="everypage" class="jshide">
-    <p style="float:right"><a href="#top" onclick="$.cookie('seen_foi2', 1, { expires: 7, path: '/' }); $('#everypage').hide('slow'); return false;">Close</a></p>
-    [ message goes here ]
-    <p style="text-align: right"><a href="#top" onclick="$.cookie('seen_foi2', 1, { expires: 7, path: '/' }); $('#everypage').hide('slow'); return false;">Close</a></p>
-    </div>
-=end
-%>
+
+<div id="everypage" class="jshide">
+  <p style="float:right"><a href="#top" onclick="$.cookie('seen_foi2', 1, { expires: 7, path: '/' }); $('#everypage').hide('slow'); return false;">Zavřít</a></p>
+  <h1>POZOR!</h1>
+  <h2>Stránky jsou ve výstavbě.</h2>
+  <p>Prosím nepoužívejte je, pokud jste k tomu nebyli přímo vyzváni.</p>
+  <p>Hotové stránky budou sloužit všem občanům, kteří se budou chtít na něco zeptat veřejných institucí podle zákona 106/1999 Sb. o svobodném přístupu k informacím.</p>
+  <p>Napište na info@informaceprovsechny.cz pokud se chcete dozvědět více o projektu. Upozorníme vás až budou stránky hotové.</p>
+  <p style="text-align: right"><a href="#top" onclick="$.cookie('seen_foi2', 1, { expires: 7, path: '/' }); $('#everypage').hide('slow'); return false;">Zavřít</a></p>
+  </div>
 <div class="entirebody">
     <div id="banner">
       <div id="banner_inner">
         <div class="lang"><%= render :partial => 'general/locale_switcher' %></div>
-        
+
         <% if not (controller.action_name == 'signin' or controller.action_name == 'signup') %>
           <div id="logged_in_bar">
           <% if @user %>
@@ -112,7 +112,7 @@
               <%= link_to _("Sign in or sign up"), signin_url(:r => request.request_uri) %>
           <% end %>
           </div>
-        <% end %>   
+        <% end %>
 
         <div id="navigation_search">
             <% form_tag({:controller => "general", :action => "search_redirect"}, {:id => "navigation_search_form"}) do %>
@@ -122,9 +122,9 @@
                </p>
             <% end %>
         </div>
-        
+
         <%= render :partial => 'general/orglink' %>
-        
+
         <%= render :partial => 'general/topnav' %>
       </div>
     </div>
