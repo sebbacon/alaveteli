@@ -12,7 +12,7 @@
     </div>
 
     <label class="form_label" for="signchangeaddress_new_address"> <%= _('New address:')%></label>
-    <%= text_area 'signchangeaddress', 'new_address', { :cols => 20, :rows => 6 } %>
+    <%= text_area 'signchangeaddress', 'new_address', { :cols => 20, :rows => 6, :value => @user.address } %>
     </p>
 
     <p>
