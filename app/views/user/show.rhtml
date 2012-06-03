@@ -1,7 +1,7 @@
 <% if @show_requests %>
- <% @title = h(@display_user.name) + _(" - Freedom of Information requests") %>
+  <% @title =  _("{{user_name}} - Freedom of Information requests", :user_name => h(@display_user.name)) %>
 <% else %>
- <% @title = h(@display_user.name) + _(" - user profile") %>
+  <% @title = _("{{user_name}} - user profile", :user_name => h(@display_user.name)) %>
 <% end %>
 
 <% if (@same_name_users.size >= 1) %>
