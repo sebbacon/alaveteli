@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # app/controllers/request_controller.rb:
 # Show information about one particular request.
 #
@@ -270,10 +271,7 @@ class RequestController < ApplicationController
             params[:outgoing_message][:default_letter] = params[:default_letter] if params[:default_letter]
             params[:outgoing_message][:info_request] = @info_request
             @outgoing_message = OutgoingMessage.new(params[:outgoing_message])
-            if !@user.nil?
-              @outgoing_message.set_signature_name(@user.name)
-              @outgoing_message.set_PI(@user.address, @user.dob)
-            end
+            @outgoing_message.set_signature_name(@user.name) if !@user.nil?
 
             if @info_request.public_body.is_requestable?
                 render :action => 'new'

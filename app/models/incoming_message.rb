@@ -584,7 +584,6 @@ class IncomingMessage < ActiveRecord::Base
         # Remove existing quoted sections
         folded_quoted_text = self.remove_lotus_quoting(text, 'FOLDED_QUOTED_SECTION')
         folded_quoted_text = IncomingMessage.remove_quoted_sections(text, "FOLDED_QUOTED_SECTION")
-
         self.cached_main_body_text_unfolded = text
         self.cached_main_body_text_folded = folded_quoted_text
         self.save!

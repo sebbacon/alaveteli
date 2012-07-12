@@ -10,38 +10,17 @@
         </title>
 
         <link rel="shortcut icon" href="/favicon.ico">
-        <%= stylesheet_link_tag 'main', :title => "Main", :rel => "stylesheet", :media => "all" %>
-        <%= stylesheet_link_tag 'fonts', :rel => "stylesheet", :media => "all"  %>
-        <%= stylesheet_link_tag 'print', :rel => "stylesheet", :media => "print"  %>
-        <% if !params[:print_stylesheet].nil? %>
-         <%= stylesheet_link_tag 'print', :rel => "stylesheet", :media => "all"  %>
-        <% end %>
 
+	<%= render :partial => 'general/stylesheet_includes' %>
 	<% if is_admin? %>
           <%= stylesheet_link_tag "/adminbootstraptheme/stylesheets/admin", :title => "Main", :rel => "stylesheet" %>
 	<% end %>
-        <%= javascript_include_tag 'jquery.js', 'jquery-ui.min','jquery.cookie.js', 'general.js' %>
 
+        <%= javascript_include_tag 'jquery.js', 'jquery-ui.min','jquery.cookie.js', 'general.js' %>
         <% if @profile_photo_javascript %>
             <script type="text/javascript" src="/javascripts/jquery.Jcrop.js"></script>
             <script type="text/javascript" src="/javascripts/profile_photo.js"></script>
             <link rel="stylesheet" href="/stylesheets/jquery.Jcrop.css" type="text/css" >
-        <% end %>
-
-        <%= stylesheet_link_tag 'admin-theme/jquery-ui-1.8.15.custom.css', :rel => 'stylesheet'%>
-        <!--[if LT IE 7]>
-        <style type="text/css">@import url("/stylesheets/ie6.css");</style>
-        <![endif]-->
-        <!--[if LT IE 7]>
-        <style type="text/css">@import url("/stylesheets/ie6-custom.css");</style>
-        <![endif]-->
-        <!--[if LT IE 8]>
-        <style type="text/css">@import url("/stylesheets/ie7.css");</style>
-        <![endif]-->
-        <!-- the following method for customising CSS is deprecated; see `doc/THEMES.md` for detail -->
-        <%= stylesheet_link_tag 'custom', :title => "Main", :rel => "stylesheet"  %>
-        <% if force_registration_on_new_request %>
-        <%= stylesheet_link_tag 'jquery.fancybox-1.3.4', :rel => "stylesheet"  %>
         <% end %>
 
         <% if @feed_autodetect %>
@@ -63,7 +42,6 @@
         <%= render :partial => 'general/before_head_end' %>
     </head>
     <body class="<%= 'admin' if is_admin? %> <%= 'front' if params[:action] == 'frontpage' %>">
-    <!-- XXX: move to a separate file -->
     <% if force_registration_on_new_request && !@user %>
     <%= javascript_include_tag 'jquery.fancybox-1.3.4.pack' %>
     <script type="text/javascript">
@@ -89,15 +67,13 @@
   <%= render :partial => 'admin_general/admin_navbar' %>
 <% end %>
 
+<% if !@popup_banner.empty? %>
 <div id="everypage" class="jshide">
-  <p style="float:right"><a href="#top" onclick="$.cookie('seen_foi2', 1, { expires: 7, path: '/' }); $('#everypage').hide('slow'); return false;">Zavřít</a></p>
-  <h1>POZOR!</h1>
-  <h2>Stránky jsou ve výstavbě.</h2>
-  <p>Prosím nepoužívejte je, pokud jste k tomu nebyli přímo vyzváni.</p>
-  <p>Hotové stránky budou sloužit všem občanům, kteří se budou chtít na něco zeptat veřejných institucí podle zákona 106/1999 Sb. o svobodném přístupu k informacím.</p>
-  <p>Napište na info@informaceprovsechny.cz pokud se chcete dozvědět více o projektu. Upozorníme vás až budou stránky hotové.</p>
-  <p style="text-align: right"><a href="#top" onclick="$.cookie('seen_foi2', 1, { expires: 7, path: '/' }); $('#everypage').hide('slow'); return false;">Zavřít</a></p>
-  </div>
+  <p style="float:right"><a href="#top" onclick="$.cookie('seen_foi2', 1, { expires: 7, path: '/' }); $('#everypage').hide('slow'); return false;"><%= _('Close') %></a></p>
+  <%= @popup_banner %>
+  <p style="text-align: right"><a href="#top" onclick="$.cookie('seen_foi2', 1, { expires: 7, path: '/' }); $('#everypage').hide('slow'); return false;"><%= _('Close') %></a></p>
+</div>
+<% end %>
 
 <div class="entirebody">
     <div id="banner">
